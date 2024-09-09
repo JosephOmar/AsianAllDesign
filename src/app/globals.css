@@ -3,31 +3,45 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --my-color: #fff;
+  /* or any other variables/style */
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+[data-theme='dark'] {
+  --my-color: #000;
+}
+[data-theme='pink'] {
+  --my-color: #ffabc8;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: var(--my-color);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+@font-face {
+  font-family: 'exl';
+  src: url('/fonts/exl.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.card-container {
+  position: relative;
+}
+
+.border-container {
+  position: absolute;
+  
+}
+
+.my-cart {
+  min-height: 100vh !important;
+  max-height: 300vh !important;
+}
+
+.backdrop-blur-sm{
+  min-height: 100vh !important;
+}
+
+label {
+  color: #000 !important;
 }

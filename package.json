@@ -9,18 +9,31 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.1.5",
+    "@material-tailwind/react": "^2.1.9",
+    "autoprefixer": "^10.4.20",
+    "next": "14.2.5",
+    "next-auth": "^4.24.7",
+    "next-view-transitions": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.5"
+    "theme-change": "^2.5.0",
+    "zustand": "^4.5.5"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@savvywombat/tailwindcss-grid-areas": "^4.0.0",
     "@types/node": "^20",
-    "@types/react": "^18",
+    "@types/react": "18.2.19",
     "@types/react-dom": "^18",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
+    "daisyui": "^4.12.10",
     "eslint": "^8",
-    "eslint-config-next": "14.2.5"
+    "eslint-config-next": "14.2.5",
+    "postcss": "^8.4.41",
+    "standard": "^17.1.0",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  },
+  "eslintConfig": {
+    "extends": "standard"
   }
 }

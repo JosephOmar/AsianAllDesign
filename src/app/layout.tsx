@@ -1,6 +1,14 @@
+import SessionAuthProvider from "@/context/SessionAuthProvider";
+import NavbarMain from "@/components/NavbarMain";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import './globals.css'
+import ChangeTheme from "@/components/ChangeTheme";
+import Script from "next/script";
+import FooterMain from "@/components/FooterMain";
+import Carousel from "@/components/Carousel";
+import { ViewTransitions } from "next-view-transitions";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +23,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <ViewTransitions>
+      <html lang="en">
+        <body className={inter.className}>
+          <SessionAuthProvider>
+            <NavbarMain/>
+            <main className="bg-gray-200">
+            <Carousel />
+              {children}
+            {/* <ChangeTheme /> */}
+            </main>
+            <FooterMain />
+          </SessionAuthProvider>
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }
