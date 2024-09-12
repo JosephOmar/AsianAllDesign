@@ -1,6 +1,5 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { Product } from "@/types/Product-Type";
 import { Order } from "@/types/Order-Type";
 
 interface OrderStore{
@@ -9,7 +8,8 @@ interface OrderStore{
   setOrder: (order: Order) => void
 }
 
-export const useOrderStore = create<OrderStore>(
+export const useOrderStore = create<OrderStore>()(
+  persist(
   (set) => ({
     order: {
       name: "",
@@ -28,5 +28,9 @@ export const useOrderStore = create<OrderStore>(
         }
       })),
     setOrder: (order) => set({order})
-  })
+  }),
+  {
+    name: 'order-storage'
+  }
+  )
 ) 
