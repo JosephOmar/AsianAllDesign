@@ -26,7 +26,7 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="en">
         <body className={inter.className}>
-          <SessionAuthProvider>
+          {/* <SessionAuthProvider> */}
             <NavbarMain/>
             <main className="bg-gray-200">
             <Carousel />
@@ -34,7 +34,7 @@ export default function RootLayout({
             {/* <ChangeTheme /> */}
             </main>
             <FooterMain />
-          </SessionAuthProvider>
+          {/* </SessionAuthProvider> */}
         </body>
       </html>
     </ViewTransitions>
