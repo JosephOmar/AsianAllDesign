@@ -1,9 +1,7 @@
 
 import React from "react";
-import Image from "next/image";
 import InfoProduct from "@/components/products/InfoProduct";
 import { Product } from "@/types/Product-Type";
-import Head from "next/head";
 import { Metadata } from "next";
 
 export const dynamicParams = false
