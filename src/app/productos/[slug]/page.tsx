@@ -4,9 +4,6 @@ import InfoProduct from "@/components/products/InfoProduct";
 import { Product } from "@/types/Product-Type";
 import { Metadata } from "next";
 
-export const dynamicParams = false
-
-
 export async function generateStaticParams() {
   
   const products = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products`).then((res) => res.json())

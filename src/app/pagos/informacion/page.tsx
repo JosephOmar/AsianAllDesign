@@ -7,7 +7,7 @@ const CustomerInformation = () => {
 
   return (
     <section className='flex justify-center items-center'>
-      <div className='max-w-[1000px] mx-auto grid grid-cols-2 my-20'>
+      <div className='max-w-[1000px] mx-auto grid sm:grid-cols-2 my-20'>
         <div className='pl-10'>
           <h3>Información de Entrega</h3>
           <FormPayment />

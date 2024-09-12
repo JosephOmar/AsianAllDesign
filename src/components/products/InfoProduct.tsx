@@ -20,8 +20,11 @@ const InfoProduct: React.FC<InfoProductProps>  = ({product} ) => {
 
   return (
     <div className='py-10'>
-      <div className='max-w-[1100px] w-[90%] mx-auto grid grid-cols-2 gap-5'>
-        <section>
+      <div className='max-w-[1100px] w-[90%] mx-auto grid sm:grid-cols-2 gap-5'>
+      <section className='sm:order-2'>
+          <GaleryProducts images={product.images} alt={product.shortDescription}/>
+        </section>
+        <section className=' overflow-hidden'>
           <div className='flex justify-between text-3xl font-bold'>
             <div className='flex flex-col gap-3'>
               <h2>{product.shortDescription}</h2>
@@ -77,13 +80,8 @@ const InfoProduct: React.FC<InfoProductProps>  = ({product} ) => {
             </div>
           </div>
         </section>
-        <section>
-          <GaleryProducts images={product.images} alt={product.shortDescription}/>
-        </section>
       </div>
     </div>
-    
-    
   )
 }
 

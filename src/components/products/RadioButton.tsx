@@ -16,7 +16,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({ options, name, color, selecte
   return (
     <div className="flex flex-col gap-2 py-3">
       <div className="text-lg font-semibold">{name}</div>
-      <div className="flex gap-2 ">
+      <div className="flex gap-2 flex-wrap ">
         {options.map((option, index) => (
           <label key={index} htmlFor={option} className="flex gap-2 justify-center items-center border rounded-lg border-black  px-2 py-1 text-sm font-medium">
             <input

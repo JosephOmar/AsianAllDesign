@@ -15,9 +15,9 @@ interface Category {
 
 export async function generateStaticParams() {
   const categories = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/categories`).then((res) => res.json())
-  return categories.map((category: Category) => {
+  return categories.map((category: Category) => ({
     slug: category.slug
-  })
+  }))
 }
 
 const CategoriesPages = async ({params} : {params : {slug: string}}) => {
