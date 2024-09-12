@@ -10,9 +10,9 @@ export const dynamicParams = false
 export async function generateStaticParams() {
   
   const products = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products`).then((res) => res.json())
-  return products.map((product: Product) => {
+  return products.map((product: Product) => ({
     slug: product.slug
-  })
+  }))
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
