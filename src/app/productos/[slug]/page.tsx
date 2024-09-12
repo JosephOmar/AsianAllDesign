@@ -3,6 +3,8 @@ import React from "react";
 import Image from "next/image";
 import InfoProduct from "@/components/products/InfoProduct";
 import { Product } from "@/types/Product-Type";
+import Head from "next/head";
+import { Metadata } from "next";
 
 export const dynamicParams = false
 
@@ -10,10 +12,27 @@ export const dynamicParams = false
 export async function generateStaticParams() {
   
   const products = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products`).then((res) => res.json())
-  console.log(products)
-  return products.map((product : Product) => ({
-    slug: product.slug,
-  }))
+  return products.map((product: Product) => {
+    slug: product.slug
+  })
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  // Fetch the product data based on the slug
+  const products: Product[] = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products`).then((res) => res.json());
+  const product = products.find((p) => p.slug === params.slug);
+
+  if (!product) {
+    return {
+      title: 'Producto no encontrado',
+      description: 'El producto que buscas no existe',
+    };
+  }
+
+  return {
+    title: product.shortDescription || product.name, 
+    description: product.description || 'Descripción del producto',
+  };
 }
 
 const ProductPage = async ({ params }: { params: { slug: string } }) => {
@@ -27,9 +46,11 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
   }
 
   return (
-    <div>
-      <InfoProduct product={product}/>
-    </div>
+    <>
+      <div>
+        <InfoProduct product={product} />
+      </div>
+    </>
   );
 };
 

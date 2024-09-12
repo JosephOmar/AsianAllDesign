@@ -252,7 +252,7 @@ const NavList = () => {
 const NavbarMain = () => {
   const [openNav, setOpenNav] = React.useState(false);
   const pathname = usePathname();
-  const { data: session, status } = useSession();
+  // const { data: session, status } = useSession();
 
 
   React.useEffect(() => {
@@ -272,7 +272,7 @@ const NavbarMain = () => {
 
   return (
     <div className="sticky w-full mx-auto z-10 top-0 flex justify-center">
-    <Navbar className="px-5 sm:px-[25vw] max-w-full py-2 rounded-none" style={{width: '100vw' }}>
+    <Navbar className="px-5 sm:px-[25vw] max-w-full py-2 rounded-none">
       <div className="flex items-center justify-between text-blue-gray-900">
         <div>
           <Link href="/" className="flex justify-center items-center gap-5">
@@ -320,7 +320,7 @@ const NavbarMain = () => {
       </div>
       <Collapse open={openNav}>
         <NavList />
-        <div className="flex w-full flex-nowrap items-center justify-center gap-2 lg:hidden">
+        {/* <div className="flex w-full flex-nowrap items-center justify-center gap-2 lg:hidden">
           { session?.user ? (
               <div className=" gap-4 flex flex-col items-center ">
                 <div>
@@ -347,7 +347,7 @@ const NavbarMain = () => {
               </div>
             )
           }
-        </div>
+        </div> */}
       </Collapse>
     </Navbar>
     </div>

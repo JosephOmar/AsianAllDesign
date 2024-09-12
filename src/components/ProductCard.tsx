@@ -20,7 +20,7 @@ interface InfoProduct {
 const ProductCard: React.FC<InfoProduct>  = ({product}) => {
 
     return (
-      <div key={product.productId} className="flex justify-center items-center">
+      <div key={product.productId} className="flex justify-center items-center  w-[200px] sm:w-[240px]">
         <div  className="bg-white rounded-lg shadow-xl overflow-hidden w-[240px]">
           <Link href={`${process.env.NEXT_PUBLIC_MY_URL}/productos/${product.slug}`} prefetch={false}>
             <Image
