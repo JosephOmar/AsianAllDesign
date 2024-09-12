@@ -4,11 +4,11 @@ import { ReactElement } from 'react';
 
 const DashboardPage = () => {
 
-  const { data: session, status} = useSession()
-  console.log({session, status})
-  if ( status === 'loading') {
-    return <p>Loading...</p>
-  }
+  // const { data: session, status} = useSession()
+  // console.log({session, status})
+  // if ( status === 'loading') {
+  //   return <p>Loading...</p>
+  // }
 
   // const getBrands = async() => {
   //   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/brands`,{

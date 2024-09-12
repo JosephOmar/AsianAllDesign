@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react";
 
 const LoginPage = () => {
   
-  const { data: session, status } = useSession();
+  // const { data: session, status } = useSession();
   const [errors, setErrors] = useState<string[]>([]);
   const [email, setEmail] = useState<string>("joseph.meza@gmail.com");
   const [password, setPassword] = useState<string>("123456");
@@ -29,15 +29,15 @@ const LoginPage = () => {
     }
   };
 
-  useEffect(() => {
-    if (status === "authenticated") {
-      if (session?.user.role === 'user') {
-        router.push("/productos");
-      } else if (session?.user.role === 'admin') {
-        router.push("/dashboard");
-      }
-    }
-  }, [session, status, router]);
+  // useEffect(() => {
+  //   if (status === "authenticated") {
+  //     if (session?.user.role === 'user') {
+  //       router.push("/productos");
+  //     } else if (session?.user.role === 'admin') {
+  //       router.push("/dashboard");
+  //     }
+  //   }
+  // }, [session, status, router]);
 
   return (
     <div>
