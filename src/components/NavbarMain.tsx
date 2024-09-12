@@ -266,9 +266,9 @@ const NavbarMain = () => {
     return null;
   }
 
-  if (status === "loading") {
-    return <div>Loading...</div>
-  }
+  // if (status === "loading") {
+  //   return <div>Loading...</div>
+  // }
 
   return (
     <div className="sticky w-full mx-auto z-10 top-0 flex justify-center">
