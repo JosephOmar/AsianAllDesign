@@ -29,7 +29,11 @@ const CategoriesPages = async ({params} : {params : {slug: string}}) => {
   const productsByCategory : Product[] = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products?category=${categoryId}`).then((res) => res.json())
 
   if (!category) {
-    return <div>Categoria no encontrada o sin productos</div>;
+    return <div>Categoria no encontrada</div>;
+  }
+
+  if (productsByCategory.length === 0) {
+    return <div>Categoria sin productos de momento</div>;
   }
 
   return (

@@ -6,7 +6,7 @@ import './globals.css'
 import ChangeTheme from "@/components/ChangeTheme";
 import Script from "next/script";
 import FooterMain from "@/components/FooterMain";
-import Carousel from "@/components/Carousel";
+import CarouselMain from "@/components/Carousel";
 import { ViewTransitions } from "next-view-transitions";
 
 
@@ -29,7 +29,7 @@ export default function RootLayout({
           {/* <SessionAuthProvider> */}
             <NavbarMain/>
             <main className="bg-gray-200">
-            <Carousel />
+            <CarouselMain />
               {children}
             {/* <ChangeTheme /> */}
             </main>

@@ -1,5 +1,5 @@
 "use client"
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import RadioButton from './RadioButton';
 import CounterProduct from './CounterProduct';
 import AddProductToCart from './AddProductToCart';
@@ -17,20 +17,53 @@ const InfoProduct: React.FC<InfoProductProps>  = ({product} ) => {
 
   const [selectedColor, setSelectedColor] = useState<string>('Negro'); // Valor predeterminado
   const [selectedSize, setSelectedSize] = useState<string>('M');
+  const [selectedClothing, setSelectedClothing] = useState<string>('Polo')
+  let [newPrice, setNewPrice] = useState<number>(35)
+
+  const [category, setCategory] = useState("");
+
+  useEffect(() => {
+    const getCategory = () => {
+      if (product.name.includes("One Piece")) {
+        setCategory("one-piece");
+      } else {
+        setCategory(product.slug.split("-")[0].toLocaleLowerCase());
+      }
+    }
+
+    getCategory();
+  }, [product]);
+
+  useEffect(() => {
+    // Actualiza el precio cuando cambia el tipo de prenda
+    const changePrice = () => {
+      if (selectedClothing === "Polo") {
+        setNewPrice(35);
+      } else if (selectedClothing === "Polera Sin Capucha") {
+        setNewPrice(50);
+      } else if (selectedClothing === "Polera Con Capucha") {
+        setNewPrice(55);
+      } else if (selectedClothing === "Polera Con Cierre") {
+        setNewPrice(60);
+      }
+    };
+
+    changePrice(); // Llama a la función cuando cambia selectedClothing
+  }, [selectedClothing]); 
 
   return (
     <div className='py-10'>
       <div className='max-w-[1100px] w-[90%] mx-auto grid sm:grid-cols-2 gap-5'>
       <section className='sm:order-2'>
-          <GaleryProducts images={product.images} alt={product.shortDescription}/>
+          <GaleryProducts category={category} images={product.images} alt={product.shortDescription}/>
         </section>
         <section className=' overflow-hidden'>
           <div className='flex justify-between text-3xl font-bold'>
             <div className='flex flex-col gap-3'>
-              <h2>{product.shortDescription}</h2>
-              <h3 className='text-xs font-normal'>{product.description}</h3>
+              <h2>{selectedClothing} {product.name}</h2>
+              <h3 className='text-xs font-normal'>{product.shortDescription}</h3>
             </div>
-            <p className='text-4xl flex flex-col'><span className='line-through text-sm pr-2'>S/40.00</span>S/{product.price}.00</p>
+            <p className='text-4xl flex flex-col'><span className='line-through text-sm pr-2'>S/{newPrice+10}</span>S/{newPrice}.00</p>
           </div>
           <RadioButton 
             options={["Negro", "Blanco", "Azul", "Lila", "Rosado"]}
@@ -46,14 +79,24 @@ const InfoProduct: React.FC<InfoProductProps>  = ({product} ) => {
             selected={selectedSize} 
             onChange={setSelectedSize} 
           />
+          <RadioButton 
+            options={["Polo", "Polera Sin Capucha", "Polera Con Capucha", "Polera Con Cierre"]}
+            name="Prenda"
+            color={["#000000", "#000000", "#000000", "#000000"]}
+            selected={selectedClothing} 
+            onChange={setSelectedClothing} 
+          />
           <CounterProduct />
-          <AddProductToCart product={{ ...product, color: selectedColor, size: selectedSize }}/>
+          <AddProductToCart product={{ ...product, name: selectedClothing+' '+product.name,price: newPrice, color: selectedColor, size: selectedSize, clothing: selectedClothing, category: category }}/>
           <div className='text-center pt-3 pb-6'>
             <span className='inline-block w-[90%] h-[2px] bg-[#edcbd6]'></span>
           </div>
           <div className="grid gap-4 text-sm leading-loose">
             <h2 className="font-bold text-2xl">Detalles del producto</h2>
             <div>
+              <p>
+                {product.description}
+              </p>
               <h3 className="font-semibold">Tallas</h3>
               <p>
                 Disponible en tallas XS, S, M, L y XL. Consulta la 

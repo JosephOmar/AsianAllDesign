@@ -14,4 +14,6 @@ export type Product = {
   quantity: number;
   color: string,
   size: string,
+  clothing: string,
+  category: string,
 }

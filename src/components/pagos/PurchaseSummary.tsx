@@ -1,9 +1,10 @@
 "use client"
-import React from 'react'
+import React, {useState} from 'react'
 import { useCartStore } from '@/store/cartStore'
 import Image from 'next/image'
 import { Link } from 'next-view-transitions'
 import { useOrderStore } from '@/store/orderStore'
+
 
 const PurchaseSummary = () => {
   const cart = useCartStore((state) => state.cart)
@@ -20,9 +21,9 @@ const PurchaseSummary = () => {
       {
         cart.map((product, index) => (
           <div key={index} className='grid grid-cols-[auto_auto_1fr] gap-2 justify-between'>
-            <Image src={`${process.env.NEXT_PUBLIC_IMAGES_URL}/products${product.images[0]}`} alt={product.description} width={60} height={60} className='rounded-lg'/>
+            <Image src={`${process.env.NEXT_PUBLIC_IMAGES_URL}/products/${product.category}${product.images[0]}`} alt={product.description} width={60} height={60} className='rounded-lg'/>
             <div className='text-sm'>
-              <div>{product.shortDescription}</div>
+              <div>{product.name}</div>
               <div>cantidad: {product.quantity}</div>
               <div>Talla: {product.size} / Color: {product.color}</div>
             </div>

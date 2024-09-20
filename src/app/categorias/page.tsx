@@ -1,60 +1,57 @@
-"use client"
+"use client";
 
-import CategoryCard from '@/components/categories/CategoryCard'
-import React, {useEffect, useState} from 'react'
-
-
-interface Category {
-  name: string,
-  description: string,
-  slug: string,
-  image: string
-}
+import CategoryCard from "@/components/categories/CategoryCard";
+import React, { useEffect, useState, useCallback } from "react";
+import { Category } from "@/types/Category-Type";
+import { CategoriesLib } from "@/components/categories/CategoryLib";
 
 const CategoriesPages = () => {
+  const [categories, setCategories] = useState<Category[]>([]);
 
-  const [categories, setCategories] = React.useState<Category[]>([])
-  
   const getCategories = async () => {
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/categories`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
-      setCategories(data.map((categorie: Category) => ({
-        name: categorie.name,
-        description: categorie.description,
-        slug: categorie.slug,
-        image: categorie.image
-      })));
+      const allCategories = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/categories`).then((res) => res.json())
+      setCategories(
+        allCategories.map((categorie: Category) => ({
+          name: categorie.name,
+          description: categorie.description,
+          slug: categorie.slug,
+          image: categorie.image,
+        }))
+      );
     } catch (error) {
       console.error("Error fetching categories:", error);
     }
   };
+  
+  const getCategoriesLib = useCallback(() => {
+    if (categories.length === 0) {
+      setCategories(CategoriesLib);
+    }
+  }, [categories]); 
 
   useEffect(() => {
-    getCategories()
-  }, [])
+    getCategories();
+  }, []);
+
+  useEffect(() => {
+    getCategoriesLib();
+  }, [getCategoriesLib]);
 
   return (
-    <div className=''>
-      <section className='py-10'>
-        <div className='text-center'>CATEGORIAS</div>
-        <div className='w-[90%] max-w-[1200px] mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5'>
-        {
-          categories.map((categorie, index) => (
-            <div key={index} className='flex justify-center items-center'>
-              <CategoryCard categorie={categorie}/>
+    <div className="">
+      <section className="py-10">
+        <div className="text-center">CATEGORIAS</div>
+        <div className="w-[90%] max-w-[1200px] mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
+          {categories.map((categorie, index) => (
+            <div key={index} className="flex justify-center items-center">
+              <CategoryCard categorie={categorie} />
             </div>
-          ))
-        }
+          ))}
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default CategoriesPages
+export default CategoriesPages;

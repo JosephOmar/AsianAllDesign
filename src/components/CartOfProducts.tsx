@@ -54,7 +54,7 @@ export function CartOfProducts() {
               {cart.map((product) => (
                 <li key={product.productId}>
                   <div className="flex items-center">
-                    <Image src={`${process.env.NEXT_PUBLIC_IMAGES_URL}/products${product.images[0]}`} width={100} height={100} alt={product.shortDescription}/>
+                    <Image src={`${process.env.NEXT_PUBLIC_IMAGES_URL}/products/${product.category}${product.images[0]}`} width={100} height={100} alt={product.shortDescription}/>
                     <div className="text-xs flex flex-col gap-2">
                       <div>{product.name}</div>
                       <div>Cantidad: {product.quantity}</div>

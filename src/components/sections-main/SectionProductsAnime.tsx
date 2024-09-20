@@ -4,7 +4,7 @@ import { Product } from '@/types/Product-Type'
 
 const SectionProductsAnime = async () => {
 
-  const products: Product[] = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products?limit=4&offset=0`).then((res) => res.json())
+  const products: Product[] = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/products?category=${2}&limit=4&offset=2`).then((res) => res.json())
 
 
   return (
