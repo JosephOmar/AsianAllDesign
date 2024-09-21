@@ -37,7 +37,6 @@ const InfoProduct: React.FC<InfoProductProps>  = ({product} ) => {
   }, [product]);
 
   useEffect(() => {
-    // Actualiza el precio cuando cambia el tipo de prenda
     const changePrice = () => {
       if (selectedClothing === "Polo") {
         setNewPrice(35);
@@ -50,8 +49,12 @@ const InfoProduct: React.FC<InfoProductProps>  = ({product} ) => {
       }
     };
 
-    changePrice(); // Llama a la función cuando cambia selectedClothing
+    changePrice(); 
   }, [selectedClothing]); 
+
+  if (!category) {
+    return <div>Loading...</div>; 
+  }
 
   return (
     <div className='py-10'>

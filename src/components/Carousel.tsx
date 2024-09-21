@@ -15,28 +15,28 @@ const CarouselMain = () => {
   return (
     <Carousel className="rounded-xl max-h-[560px] overflow-hidden">
       <Image
-          src={`${process.env.NEXT_PUBLIC_IMAGES_URL}/slider-main/slider-main-1.webp`}
+          src={`${process.env.NEXT_PUBLIC_IMAGES_URL}/slider/slider-main-1.webp`}
           height={560}
           width={1920}
           alt='Foto para el carousel 2'
           priority
         />
       <Image
-          src={`${process.env.NEXT_PUBLIC_IMAGES_URL}/slider-main/slider-main-2.webp`}
+          src={`${process.env.NEXT_PUBLIC_IMAGES_URL}/slider/slider-main-2.webp`}
           height={560}
           width={1920}
           alt='Foto para el carousel 2'
           priority
         />
         <Image
-          src={`${process.env.NEXT_PUBLIC_IMAGES_URL}/slider-main/slider-main-3.webp`}
+          src={`${process.env.NEXT_PUBLIC_IMAGES_URL}/slider/slider-main-3.webp`}
           height={560}
           width={1920}
           alt='Foto para el carousel 2'
           priority
         />
         <Image
-          src={`${process.env.NEXT_PUBLIC_IMAGES_URL}/slider-main/slider-main-4.webp`}
+          src={`${process.env.NEXT_PUBLIC_IMAGES_URL}/slider/slider-main-4.webp`}
           height={560}
           width={1920}
           alt='Foto para el carousel 2'

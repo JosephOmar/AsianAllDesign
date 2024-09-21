@@ -25,6 +25,10 @@ const ProductCard: React.FC<InfoProduct>  = ({product}) => {
     getCategory();
   }, [product]);
 
+  if (!category) {
+    return <div>Loading...</div>; 
+  }
+
     return (
       <div key={product.productId} className="flex justify-center items-center  w-[180px] sm:w-[240px] hover:scale-110 ">
         <div  className="bg-white rounded-lg shadow-xl overflow-hidden w-[240px]">
