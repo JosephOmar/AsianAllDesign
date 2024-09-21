@@ -25,8 +25,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 
   return {
-    title: product.shortDescription || product.name, 
-    description: product.description || 'Descripción del producto',
+    title: product.name, 
+    description: product.shortDescription || 'Descripción del producto',
   };
 }
 

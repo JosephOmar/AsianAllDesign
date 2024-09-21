@@ -26,6 +26,8 @@ const InfoProduct: React.FC<InfoProductProps>  = ({product} ) => {
     const getCategory = () => {
       if (product.name.includes("One Piece")) {
         setCategory("one-piece");
+      } else if (product.name.includes("Demon Slayer")) {
+        setCategory("demon-slayer");
       } else {
         setCategory(product.slug.split("-")[0].toLocaleLowerCase());
       }
