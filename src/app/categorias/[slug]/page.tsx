@@ -1,8 +1,5 @@
 import React from "react";
-import { Link } from 'next-view-transitions'
 import ProductCard from "@/components/ProductCard";
-import Image from "next/image";
-import { DivideIcon } from "@heroicons/react/24/outline";
 import { Product } from "@/types/Product-Type";
 
 interface Category {
@@ -40,8 +37,8 @@ const CategoriesPages = async ({params} : {params : {slug: string}}) => {
     <div className="flex justify-center items-center">
       <div className=" grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6 bg-white rounded-2xl gap-4 sm:gap-10 px-5 sm:px-20 py-5 sm:py-10" style={{margin:"30px 10px"}}>
         {
-          productsByCategory.map((product, index) => (
-            <ProductCard key={index} product={product}/>
+          productsByCategory.map((product) => (
+            <ProductCard key={product.productId} product={product}/>
           ))
         }
       </div>
@@ -50,6 +47,6 @@ const CategoriesPages = async ({params} : {params : {slug: string}}) => {
 }
 
 export default CategoriesPages
-{/* <Link href={`${process.env.NEXT_PUBLIC_MY_URL}/productos/${product.slug}`}><div>{product.name}</div></Link>
-              <div>{product.description}</div>
-              <div>{product.price}</div> */}
+//<Link href={`${process.env.NEXT_PUBLIC_MY_URL}/productos/${product.slug}`}><div>{product.name}</div></Link>
+//              <div>{product.description}</div>
+//              <div>{product.price}</div> 

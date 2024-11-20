@@ -28,23 +28,25 @@ import {
   ChevronRightIcon,
   ChevronDownIcon,
   Bars3Icon,
-  XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { Link } from 'next-view-transitions'
 
 const Aside = () => {
-  const [open, setOpen] = React.useState(0);
-  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(0); // Estado para controlar las secciones abiertas en el acordeón
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false); // Estado para controlar si el drawer está abierto o cerrado
 
+  // Función para manejar el cambio de sección en el acordeón
   const handleOpen = (value: number) => {
-    setOpen(open === value ? 0 : value);
+    setOpen(open === value ? 0 : value); // Si la misma sección es clickeada, se cierra
   };
 
+  // Funciones para abrir y cerrar el drawer
   const openDrawer = () => setIsDrawerOpen(true);
   const closeDrawer = () => setIsDrawerOpen(false);
 
   return (
     <>
+      {/* Botón para abrir el drawer */}
       <IconButton
         variant="text"
         size="lg"
@@ -54,9 +56,12 @@ const Aside = () => {
       >
         <Bars3Icon className="h-8 w-8 stroke-2" />
       </IconButton>
+
+      {/* Drawer que contiene el menú lateral */}
       <Drawer open={isDrawerOpen} onClose={closeDrawer}>
         <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
           <div className="mb-2 flex items-center gap-4 p-4">
+            {/* Logo en el encabezado del drawer */}
             <Image
               src="https://docs.material-tailwind.com/img/logo-ct-dark.png"
               width={32}
@@ -68,7 +73,10 @@ const Aside = () => {
               Sidebar
             </Typography>
           </div>
+
+          {/* Lista de secciones en el menú */}
           <List>
+            {/* Acordeón para "Dashboard" */}
             <Accordion
               open={open === 1}
               icon={
@@ -95,6 +103,7 @@ const Aside = () => {
               </ListItem>
               <AccordionBody className="py-1">
                 <List className="p-0">
+                  {/* Opciones dentro de "Dashboard" */}
                   <ListItem>
                     <ListItemPrefix>
                       <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
@@ -116,6 +125,8 @@ const Aside = () => {
                 </List>
               </AccordionBody>
             </Accordion>
+
+            {/* Acordeón para "E-Commerce" */}
             <Accordion
               open={open === 2}
               icon={
@@ -142,6 +153,7 @@ const Aside = () => {
               </ListItem>
               <AccordionBody className="py-1">
                 <List className="p-0">
+                  {/* Opciones dentro de "E-Commerce" */}
                   <ListItem>
                     <ListItemPrefix>
                       <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
@@ -159,7 +171,10 @@ const Aside = () => {
                 </List>
               </AccordionBody>
             </Accordion>
+
             <hr className="my-2 border-blue-gray-50" />
+
+            {/* Opciones estáticas fuera del acordeón */}
             <ListItem>
               <ListItemPrefix>
                 <InboxIcon className="h-5 w-5" />

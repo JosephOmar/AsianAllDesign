@@ -43,8 +43,8 @@ const CategoriesPages = () => {
       <section className="py-10">
         <div className="text-center">CATEGORIAS</div>
         <div className="w-[90%] max-w-[1200px] mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
-          {categories.map((categorie, index) => (
-            <div key={index} className="flex justify-center items-center">
+          {categories.map((categorie) => (
+            <div key={categorie.name} className="flex justify-center items-center">
               <CategoryCard categorie={categorie} />
             </div>
           ))}

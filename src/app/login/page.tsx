@@ -1,9 +1,8 @@
 "use client";
 
+// import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
 
 const LoginPage = () => {
   
@@ -11,7 +10,7 @@ const LoginPage = () => {
   const [errors, setErrors] = useState<string[]>([]);
   const [email, setEmail] = useState<string>("joseph.meza@gmail.com");
   const [password, setPassword] = useState<string>("123456");
-  const router = useRouter();
+  // const router = useRouter();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -25,7 +24,6 @@ const LoginPage = () => {
 
     if (responseNextAuth?.error) {
       setErrors(responseNextAuth.error.split(","));
-      return;
     }
   };
 

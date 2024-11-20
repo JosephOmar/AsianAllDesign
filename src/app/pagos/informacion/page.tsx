@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import FormPayment from '@/components/pagos/FormPayment';
 import PurchaseSummary from '@/components/pagos/PurchaseSummary';
 

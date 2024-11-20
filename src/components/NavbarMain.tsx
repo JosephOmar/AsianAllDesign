@@ -1,14 +1,12 @@
 "use client";
 
 import React from "react";
-import { signOut, useSession } from "next-auth/react";
 import { usePathname } from 'next/navigation';
 import { Link } from 'next-view-transitions'
 import {
   Navbar,
   Collapse,
   Typography,
-  Button,
   IconButton,
   List,
   ListItem,
@@ -22,17 +20,6 @@ import {
   Bars3Icon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import {
-  Bars4Icon,
-  GlobeAmericasIcon,
-  NewspaperIcon,
-  PhoneIcon,
-  RectangleGroupIcon,
-  SquaresPlusIcon,
-  SunIcon,
-  TagIcon,
-  UserGroupIcon,
-} from "@heroicons/react/24/solid";
 import Image from "next/image";
 import { CartOfProducts } from "./CartOfProducts";
 
@@ -155,8 +142,8 @@ const NavListMenu= ({menuItems, titleList} : any) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   const renderItems = menuItems.map(
-    ({ image, title, description, url } :any, key : any) => (
-      <Link href={url} key={key}>
+    ({ image, title, description, url } :any) => (
+      <Link href={url} key={title}>
         <MenuItem className="flex items-center gap-3 rounded-lg">
           <div className="flex items-center justify-center rounded-lg !bg-blue-gray-50 p-2 w-[48px] h-[48px]">
             <Image src={`${process.env.NEXT_PUBLIC_IMAGES_URL}${image}`} alt="Logo" width={40} height={40}/>

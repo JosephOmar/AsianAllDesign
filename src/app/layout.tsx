@@ -1,10 +1,10 @@
-import SessionAuthProvider from "@/context/SessionAuthProvider";
+// import SessionAuthProvider from "@/context/SessionAuthProvider";
 import NavbarMain from "@/components/NavbarMain";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import './globals.css'
-import ChangeTheme from "@/components/ChangeTheme";
-import Script from "next/script";
+// import ChangeTheme from "@/components/ChangeTheme";
+// import Script from "next/script";
 import FooterMain from "@/components/FooterMain";
 import CarouselMain from "@/components/Carousel";
 import { ViewTransitions } from "next-view-transitions";
